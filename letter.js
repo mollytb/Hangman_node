@@ -1,23 +1,22 @@
 //Letter constructor
-function Letter(string, boolean){
-    this.letter = letter;
+function Letter(char){
+    this.name = name;
     this.guessed = false;
 };
 //Replace _ with actual letter if it is guessed
-Letter.prototype.replace = function(){
+Letter.prototype.toString = function(){
    if(this.guessed){
-       console.log(this.letter)
+       return this.name;
    }
    else{
-        console.log("_")
+        return "_";
    }
 };
 //Check if the letter guessed is in the word
 Letter.prototype.check = function(){
-    if(guess === this.letter){
+    if(answer.guess === this.letter){
         this.guessed = true;
     }
 };
-
 
 module.exports = Letter;

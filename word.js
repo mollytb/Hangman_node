@@ -1,21 +1,26 @@
 var Letter = require("./letter.js");
-var Word = function(letterArray, letterWord) {
-    // this.words will hold all of the possible words
-    this.letterArray = [];
-    this.letterWord = letterWord;
-  
+
+//word constructor
+function Word(word)  {
+    // will hold all of the letters of the current word.
+    this.letters = [];
     
-
-  };
-
+    
   
-  Word.prototype.addWord = function() {
-    this.letterArray.push(new Word(Valraven));
+    this.getLetters = function() {
+      //populate the this.letters array with new Letter objects
+      for(var i = 0; i< this.length; i++){
+        var newLetter = new Letter([i]);
+        this.letters.push(newLetter);
+      }
+    };
   };
-  //newWord.replace();
+    
+  //Word.prototype.addWord = function() {
+  //  this.letterArray.push(randomWord);
+  //};
+  
+ 
 
-  var wordBank = ["rogue", "cyclops", "phoenix", "wolverine", "ice man", "beast", 
-  "angel", "colossus", "nightcrawler", "storm", "shadowcat"];
-  var select = Math.floor(Math.random() * wordBank.length);
-  var randomWord = wordBank[select];
-  //console.log(randomWord);
+
+  module.exports = Word;
