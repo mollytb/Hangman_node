@@ -5,18 +5,17 @@ var Word = require("./word.js");
 //wrong guesses allowed before game terminates
 var guessesLeft = 10
 
-//function to select random word from word bank to use during game
-randomWord = function randomWord() {
-    //possible words for game
-    var wordBank = ["rogue", "cyclops", "phoenix", "wolverine", "ice man", "beast",
-        "angel", "colossus", "nightcrawler", "storm", "shadowcat"];
-    //pick a possible word randomly
-    var select = Math.floor(Math.random() * wordBank.length);
-    //get word for game
-    var chosenWord = wordBank[select];
-    //console.log(randomWord);
-    return chosenWord;
-}
+
+
+//possible words for game
+var wordBank = ["rogue", "cyclops", "phoenix", "wolverine", "ice man", "beast",
+    "angel", "colossus", "nightcrawler", "storm", "shadowcat"];
+//pick a possible word randomly
+var select = Math.floor(Math.random() * wordBank.length);
+//get word for game
+var chosenWord = wordBank[select];
+
+
 
 
 
@@ -26,7 +25,7 @@ var lettersGuessed = [];
 
 function play() {
     if (lettersGuessed.length === 0) {
-        randomWord();
+
         //var newWord = Word(chosenWord);
         inquirer.prompt([
             {
@@ -38,21 +37,24 @@ function play() {
         ])
             .then(function (answers) {
                 if (answers.playGame) {
-                    //I can't get my randomWord function to generate a word that is recognized and then can be
-                    //used to create a new word object and fill in the letters array
+                    
                     console.log("Let's go!");
                     //construct a new word using the random word selected from the word bank
-                        //console.log(newWord);
-                        startGame();
-                    
+                    console.log(chosenWord);
+                    var chosenWordLetters = chosenWord.split(" ");
+                    var newWord = new Word(chosenWord);
+                    newWord.getLetters();
+                    console.log(newWord.letters.toString);
+                    startGame();
+
                 } else {
                     console.log("Fine, no one wants to play with you anyway.")
                 };
-                });
+            });
 
-    
 
-}
+
+    }
 }
 function startGame() {
     if (guessesLeft > 0) {
@@ -72,9 +74,10 @@ function startGame() {
         ])
             .then(function (answers) {
                 //this is where my check function should be, but I can't get it to work.
-                if (answers.guess === 20) {
+                if (answers.guess === chosenWord.indexOf) {
+                    newLetter.letterCheck();
                     if (lettersGuessed.indexOf(answers.guess) === -1) lettersGuessed.push(answers.guess);
-                    
+
                     console.log(lettersGuessed);
                     console.log("You have " + (guessesLeft - 1) + " guesses left.");
                     //console.log(newWord);
@@ -88,7 +91,7 @@ function startGame() {
                     startGame();
                 }
             });
-    }else{
+    } else {
         console.log(lettersGuessed);
         console.log("                GAME OVER")
     }

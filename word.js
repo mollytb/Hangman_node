@@ -12,8 +12,16 @@ function Word(word)  {
       for(var i = 0; i< this.length; i++){
         var newLetter = new Letter([i]);
         this.letters.push(newLetter);
+        console.log(this.letters)
       }
+      
+
     };
+    this.wordCheck = function(){
+      for(var i = 0; i< this.letters.length; i++){
+        newLetter.letterCheck();
+      }
+    }
   };
     
   //Word.prototype.addWord = function() {

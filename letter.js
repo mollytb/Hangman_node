@@ -13,7 +13,7 @@ Letter.prototype.toString = function(){
    }
 };
 //Check if the letter guessed is in the word
-Letter.prototype.check = function(){
+Letter.prototype.letterCheck = function(){
     if(answer.guess === this.letter){
         this.guessed = true;
     }
