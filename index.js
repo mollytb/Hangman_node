@@ -37,15 +37,24 @@ function play() {
         ])
             .then(function (answers) {
                 if (answers.playGame) {
-                    
+
                     console.log("Let's go!");
                     //construct a new word using the random word selected from the word bank
                     console.log(chosenWord);
                     var chosenWordLetters = chosenWord.split(" ");
+                    //not working word function
                     var newWord = new Word(chosenWord);
                     newWord.getLetters();
-                    console.log(newWord.letters.toString);
+                    console.log(newWord.letters.toString());
                     startGame();
+                    //trying to make anything work.
+                    //replace(/[a-z]/gi, '_'
+                        let generateUnderscore = () => {
+                            for (let i = 0; i, chosenWordLetters.length; i++) {
+                                Underscore.push("_");
+                            }
+                            console.log(Underscore);
+                        }
 
                 } else {
                     console.log("Fine, no one wants to play with you anyway.")
@@ -77,12 +86,13 @@ function startGame() {
                 if (answers.guess === chosenWord.indexOf) {
                     newLetter.letterCheck();
                     if (lettersGuessed.indexOf(answers.guess) === -1) lettersGuessed.push(answers.guess);
-
+                   
                     console.log(lettersGuessed);
                     console.log("You have " + (guessesLeft - 1) + " guesses left.");
                     //console.log(newWord);
                     startGame();
                 } else {
+                    
                     console.log(lettersGuessed);
                     console.log("You have " + (guessesLeft - 1) + " guesses left.");
                     //console.log(newWord);
@@ -93,7 +103,7 @@ function startGame() {
             });
     } else {
         console.log(lettersGuessed);
-        console.log("                GAME OVER")
+        console.log("                GAME    OVER      ")
     }
 };
 
